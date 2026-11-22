@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Celebration | Anuj & Mira</title>
+    <!-- Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1d0c18;
+            --bg-plum: #2c1224;
+            --card-bg: rgba(45, 20, 38, 0.72);
+            --card-border: rgba(232, 197, 134, 0.25);
+            --gold: #e8c586;
+            --gold-bright: #f7dfb0;
+            --gold-muted: #b89860;
+            --text-light: #f4ece6;
+            --text-muted: #c4b2bc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 15%, #3d1831 0%, #1a0a15 60%, #12060e 100%),
+                linear-gradient(rgba(232, 197, 134, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 197, 134, 0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 90px 90px, 90px 90px;
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- ENVELOPE / COVER SCREEN --- */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #3b1630 0%, #160711 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        #intro-overlay.hidden {
+            opacity: 0;
+            transform: scale(1.08);
+            pointer-events: none;
+        }
+
+        .crest-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .sub-tag {
+            font-family: 'Cinzel', serif;
+            font-size: 0.72rem;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 8px;
+        }
+
+        .script-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3.2rem, 8vw, 5.2rem);
+            color: var(--gold-bright);
+            font-weight: 400;
+            line-height: 1.15;
+            text-shadow: 0 4px 25px rgba(232, 197, 134, 0.25);
+        }
+
+        .guest-welcome {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
+        }
+
+        .open-invite-btn {
+            margin-top: 30px;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, #e8c586, #c69c53);
+            color: #1d0c18;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(232, 197, 134, 0.35);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .open-invite-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(232, 197, 134, 0.5);
+        }
+
+        /* --- FLOATING SOUND BUTTON --- */
+        #sound-toggle {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 1000;
+            background: rgba(30, 12, 24, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--card-border);
+            color: var(--gold);
+            padding: 10px 16px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
+
+        /* --- COMMON LAYOUT & DIVIDERS --- */
+        .wrapper {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 75px 0;
+            text-align: center;
+        }
+
+        .sec-heading {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            color: var(--gold-bright);
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .sec-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .gold-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 22px auto 38px;
+            max-width: 340px;
+        }
+
+        .gold-divider span.line {
+            height: 1px;
+            flex: 1;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .gold-divider span.diamond {
+            width: 7px;
+            height: 7px;
+            background: var(--gold);
+            transform: rotate(45deg);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+
+        .date-pill {
+            font-family: 'Cinzel', serif;
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin: 14px 0;
+        }
+
+        .scroll-hint {
+            margin-top: 35px;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* --- THE COUPLE SECTION (ARCH FRAMES) --- */
+        .couple-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+
+        .couple-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 36px 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .arch-frame {
+            width: 170px;
+            height: 220px;
+            margin: 0 auto 22px;
+            border-radius: 100px 100px 12px 12px;
+            padding: 6px;
+            border: 1.5px solid var(--gold);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+        }
+
+        .arch-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 94px 94px 8px 8px;
+        }
+
+        .couple-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold-bright);
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+        }
+
+        .relation-tag {
+            font-size: 0.7rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 4px;
+        }
+
+        .parents-name {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CELEBRATION SCHEDULE --- */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .event-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .event-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .event-tag {
+            font-size: 0.68rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .event-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            color: var(--gold-bright);
+            margin-bottom: 10px;
+        }
+
+        .event-desc {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .event-meta {
+            border-top: 1px solid rgba(232, 197, 134, 0.15);
+            padding-top: 14px;
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        .event-meta p {
+            margin-bottom: 5px;
+        }
+
+        .dir-link {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .dir-link:hover {
+            text-decoration: underline;
+        }
+
+        /* --- COUNTDOWN TIMER --- */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .count-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px 10px;
+        }
+
+        .count-card span {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 4vw, 2.5rem);
+            color: var(--gold-bright);
+        }
+
+        .count-card small {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* --- MEMORIES IN BLOOM (GALLERY) --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .gallery-item {
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            height: 260px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.07);
+        }
+
+        /* --- VIDEO GLIMPSE --- */
+        .video-frame {
+            max-width: 720px;
+            margin: 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1.5px solid var(--gold);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- VENUE & TRAVEL TABS --- */
+        .venue-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .v-tab {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-light);
+            padding: 12px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: left;
+            min-width: 170px;
+            transition: 0.3s;
+        }
+
+        .v-tab.active, .v-tab:hover {
+            border-color: var(--gold);
+            background: rgba(232, 197, 134, 0.14);
+        }
+
+        .v-tab strong {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--gold-bright);
+        }
+
+        .v-tab small {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .venue-panel {
+            max-width: 780px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 28px;
+            text-align: left;
+        }
+
+        .venue-panel h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: var(--gold-bright);
+        }
+
+        .venue-panel p.addr {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+        }
+
+        .map-box {
+            width: 100%;
+            height: 240px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            margin-bottom: 18px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .gold-btn {
+            display: inline-block;
+            padding: 12px 26px;
+            background: linear-gradient(135deg, #e8c586, #c69c53);
+            color: #1d0c18;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            border-radius: 30px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .travel-notes {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(232, 197, 134, 0.15);
+            font-size: 0.84rem;
+            color: var(--text-muted);
+        }
+
+        .travel-notes ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .travel-notes li::before {
+            content: "• ";
+            color: var(--gold);
+        }
+
+        /* --- LIVE STREAM CARD --- */
+        .live-card {
+            max-width: 540px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 36px 24px;
+        }
+
+        .live-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* --- RSVP & SHARE --- */
+        .rsvp-box {
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 32px 24px;
+            text-align: left;
+        }
+
+        .rsvp-choice {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .choice-btn {
+            padding: 12px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-light);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .choice-btn.selected {
+            border-color: var(--gold);
+            background: rgba(232, 197, 134, 0.18);
+            color: var(--gold-bright);
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: rgba(18, 6, 14, 0.7);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .rsvp-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .whatsapp-btn {
+            background: #1f7a4c;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 20px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        /* Share Row */
+        .share-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .share-pill {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-pill.wa {
+            background: #1f7a4c;
+            border-color: #1f7a4c;
+        }
+
+        footer {
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            background: linear-gradient(to top, #12060e, transparent);
+        }
+
+        @media (max-width: 600px) {
+            .rsvp-actions, .rsvp-choice {
+                grid-template-columns: 1fr;
+            }
+            .countdown-grid {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BACKGROUND MUSIC: Folder mein 'song.mp3' naam se file rakhein -->
+    <audio id="wedding-audio" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="sound-toggle" onclick="toggleAudio()">♪ SOUND OFF</button>
+
+    <!-- COVER / INTRO OVERLAY -->
+    <div id="intro-overlay">
+        <div class="crest-icon">♛</div>
+        <div class="sub-tag">Wedding Celebration</div>
+        <h1 class="script-names">Anuj &amp; Mira</h1>
+        <div class="date-pill">SUNDAY, JANUARY 24, 2027 • RAIPUR</div>
+        <div id="guest-name-display" class="guest-welcome"></div>
+        <button class="open-invite-btn" onclick="enterSite()">Open Invitation</button>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="crest-icon">♛</div>
+        <div class="sub-tag">Wedding Celebration</div>
+        <h1 class="script-names">Anuj &amp; Mira</h1>
+        <div class="date-pill">SUNDAY, JANUARY 24, 2027 • RAIPUR</div>
+        <p class="sec-desc">Together with our families, we joyfully invite you to celebrate our union</p>
+        <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+        <div class="scroll-hint">Scroll to Explore ↓</div>
+    </section>
+
+    <div class="wrapper">
+
+        <!-- THE COUPLE: Folder mein 'groom.jpg' aur 'bride.jpg' rakhein -->
+        <section class="reveal">
+            <div class="sub-tag">Two Souls</div>
+            <h2 class="sec-heading">The Couple</h2>
+            <p class="sec-desc">Two families, many traditions, one timeless celebration.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="couple-grid">
+                <div class="couple-card">
+                    <div class="arch-frame">
+                        <img src="groom.jpg" alt="Anuj">
+                    </div>
+                    <h3>ANUJ SHARMA</h3>
+                    <div class="relation-tag">Son Of</div>
+                    <p class="parents-name">Shri Prakash Sharma &amp; Smt. Kavita Sharma</p>
+                </div>
+
+                <div class="couple-card">
+                    <div class="arch-frame">
+                        <img src="bride.jpg" alt="Mira">
+                    </div>
+                    <h3>MIRA VERMA</h3>
+                    <div class="relation-tag">Daughter Of</div>
+                    <p class="parents-name">Shri Mahendra Verma &amp; Smt. Rekha Verma</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CELEBRATION SCHEDULE -->
+        <section class="reveal">
+            <div class="sub-tag">Wedding Events</div>
+            <h2 class="sec-heading">Celebration Schedule</h2>
+            <p class="sec-desc">Every ritual, every moment — thoughtfully planned for family and friends.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="events-grid">
+                <div class="event-box">
+                    <div>
+                        <div class="event-tag">✦ Purity &amp; Joy</div>
+                        <h3>Haldi Ceremony</h3>
+                        <p class="event-desc">A joyful morning ceremony with blessings from elders and playful family rituals.</p>
+                    </div>
+                    <div class="event-meta">
+                        <p>📅 Saturday, 23rd Jan • 10:30 AM</p>
+                        <p>📍 Sharma Residence, Civil Lines</p>
+                        <a href="https://maps.google.com/?q=Civil+Lines+Raipur" target="_blank" class="dir-link">Get Directions →</a>
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div>
+                        <div class="event-tag">✦ Music &amp; Dance</div>
+                        <h3>Sangeet Night</h3>
+                        <p class="event-desc">An evening of soulful melodies, dance performances, and family celebration.</p>
+                    </div>
+                    <div class="event-meta">
+                        <p>📅 Saturday, 23rd Jan • 7:30 PM</p>
+                        <p>📍 Royal Heritage Lawn, VIP Road</p>
+                        <a href="https://maps.google.com/?q=VIP+Road+Raipur" target="_blank" class="dir-link">Get Directions →</a>
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div>
+                        <div class="event-tag">✦ Sacred Vows</div>
+                        <h3>Wedding Ceremony</h3>
+                        <p class="event-desc">Sacred mantras, varmala, and saat pheras — the beginning of our forever.</p>
+                    </div>
+                    <div class="event-meta">
+                        <p>📅 Sunday, 24th Jan • 8:00 PM</p>
+                        <p>📍 The Grand Imperial Resort</p>
+                        <a href="https://maps.google.com/?q=Raipur" target="_blank" class="dir-link">Get Directions →</a>
+                    </div>
+                </div>
+
+                <div class="event-box">
+                    <div>
+                        <div class="event-tag">✦ Grand Celebration</div>
+                        <h3>Reception</h3>
+                        <p class="event-desc">A grand evening of dining, blessings, and welcoming the newlyweds.</p>
+                    </div>
+                    <div class="event-meta">
+                        <p>📅 Monday, 25th Jan • 7:30 PM</p>
+                        <p>📍 Courtyard Grand Ballroom</p>
+                        <a href="https://maps.google.com/?q=Raipur" target="_blank" class="dir-link">Get Directions →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COUNTDOWN TO THE BIG DAY -->
+        <section class="reveal">
+            <div class="sub-tag">Sacred Muhurat</div>
+            <h2 class="sec-heading">Countdown To The Big Day</h2>
+            <p class="sec-desc">The auspicious moment is getting closer.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="countdown-grid">
+                <div class="count-card"><span id="d">00</span><small>Days</small></div>
+                <div class="count-card"><span id="h">00</span><small>Hours</small></div>
+                <div class="count-card"><span id="m">00</span><small>Minutes</small></div>
+                <div class="count-card"><span id="s">00</span><small>Seconds</small></div>
+            </div>
+        </section>
+
+        <!-- MEMORIES IN BLOOM: Folder mein photo1.jpg se photo4.jpg rakhein -->
+        <section class="reveal">
+            <div class="sub-tag">Captured Chapters</div>
+            <h2 class="sec-heading">Memories In Bloom</h2>
+            <p class="sec-desc">A glimpse of moments leading to our celebration.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="photo1.jpg" alt="Memory 1"></div>
+                <div class="gallery-item"><img src="photo2.jpg" alt="Memory 2"></div>
+                <div class="gallery-item"><img src="photo3.jpg" alt="Memory 3"></div>
+                <div class="gallery-item"><img src="photo4.jpg" alt="Memory 4"></div>
+            </div>
+        </section>
+
+        <!-- A SPECIAL GLIMPSE (VIDEO) -->
+        <section class="reveal">
+            <div class="sub-tag">Our Story</div>
+            <h2 class="sec-heading">A Special Glimpse</h2>
+            <p class="sec-desc">A special glimpse of the moments that led us here.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="video-frame">
+                <!-- Apne Pre-Wedding YouTube Video ka Embed Link yahan dalein -->
+                <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" title="Pre Wedding Teaser" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- VENUE & TRAVEL -->
+        <section class="reveal">
+            <div class="sub-tag">Venue Guide</div>
+            <h2 class="sec-heading">Venue &amp; Travel</h2>
+            <p class="sec-desc">Save the date and arrive with ease.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="venue-tabs">
+                <button class="v-tab active" onclick="switchVenue(0, this)">
+                    <strong>HALDI CEREMONY</strong>
+                    <small>Saturday, 23rd Jan • 10:30 AM</small>
+                </button>
+                <button class="v-tab" onclick="switchVenue(1, this)">
+                    <strong>SANGEET NIGHT</strong>
+                    <small>Saturday, 23rd Jan • 7:30 PM</small>
+                </button>
+                <button class="v-tab" onclick="switchVenue(2, this)">
+                    <strong>WEDDING CEREMONY</strong>
+                    <small>Sunday, 24th Jan • 8:00 PM</small>
+                </button>
+                <button class="v-tab" onclick="switchVenue(3, this)">
+                    <strong>RECEPTION</strong>
+                    <small>Monday, 25th Jan • 7:30 PM</small>
+                </button>
+            </div>
+
+            <div class="venue-panel">
+                <h3 id="v-name">SHARMA RESIDENCE</h3>
+                <p class="addr" id="v-addr">Civil Lines, Near Raj Bhavan, Raipur (C.G.)</p>
+                <div class="map-box">
+                    <iframe id="v-map" src="https://maps.google.com/maps?q=Civil%20Lines%20Raipur&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+                </div>
+                <a id="v-link" href="https://maps.google.com/?q=Civil+Lines+Raipur" target="_blank" class="gold-btn">GET DIRECTIONS</a>
+
+                <div class="travel-notes">
+                    <strong style="color: var(--gold); letter-spacing: 1px;">TRAVEL NOTES</strong>
+                    <ul>
+                        <li>Arrive 30 minutes early for welcome rituals</li>
+                        <li>Traditional attire is warmly encouraged</li>
+                        <li>Parking and valet support available on site</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- WATCH LIVE STREAM -->
+        <section class="reveal">
+            <div class="live-card">
+                <div class="live-badge">● Live Stream</div>
+                <h2 class="sec-heading">Watch Live</h2>
+                <p class="sec-desc" style="margin-bottom: 22px;">Can't make it in person? Join us virtually as we celebrate this beautiful moment together.</p>
+                <a href="https://youtube.com" target="_blank" class="gold-btn">▶ JOIN LIVE STREAM</a>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 14px;">The live stream will begin 30 minutes before the ceremony.</p>
+            </div>
+        </section>
+
+        <!-- RSVP & SHARE -->
+        <section class="reveal">
+            <div class="sub-tag">Join The Celebration</div>
+            <h2 class="sec-heading">RSVP &amp; Share</h2>
+            <p class="sec-desc">We would be honoured to celebrate this day with you.</p>
+            <div class="gold-divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
+
+            <div class="rsvp-box">
+                <div class="rsvp-choice">
+                    <button class="choice-btn selected" onclick="selectStatus('Joyfully Accept', this)">✨ Joyfully Accept</button>
+                    <button class="choice-btn" onclick="selectStatus('Regretfully Decline', this)">🤍 Regretfully Decline</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" id="rsvp-name" placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Blessings</label>
+                    <textarea id="rsvp-msg" rows="3" placeholder="Write your blessings for Anuj & Mira..."></textarea>
+                </div>
+
+                <div class="rsvp-actions">
+                    <button class="gold-btn" onclick="sendWhatsAppRSVP()">SEND RSVP ON WHATSAPP</button>
+                    <button class="whatsapp-btn" onclick="shareOnWhatsApp()">SHARE INVITATION</button>
+                </div>
+            </div>
+
+            <!-- SPREAD THE JOY -->
+            <div style="margin-top: 60px;">
+                <div class="sub-tag">Spread The Joy</div>
+                <h2 class="sec-heading" style="font-size: 1.6rem;">Share This Invitation</h2>
+                <p class="sec-desc" style="margin-bottom: 22px;">Let your loved ones know about our special day</p>
+
+                <div class="share-buttons">
+                    <button class="share-pill wa" onclick="shareOnWhatsApp()">💬 WhatsApp</button>
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anuj+%26+Mira+Wedding&dates=20270124T143000Z/20270124T200000Z&details=You+are+cordially+invited+to+the+wedding+of+Anuj+and+Mira!&location=Raipur" target="_blank" class="share-pill">📅 Add to Calendar</a>
+                    <button class="share-pill" onclick="copyInviteLink()">🔗 Copy Link</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="crest-icon">♛</div>
+        <div class="sub-tag">With Gratitude</div>
+        <h2 class="script-names" style="font-size: 3.2rem;">Anuj &amp; Mira</h2>
+        <div class="date-pill">JANUARY 24, 2027</div>
+        <p style="color: var(--gold); font-size: 0.85rem; margin-top: 6px;">#AnujWedsMira</p>
+    </footer>
+
+    <script>
+        // 1. Personalized Guest Name via URL (?to=GuestName)
+        const urlParams = new URLSearchParams(window.location.search);
+        const guestName = urlParams.get('to');
+        if (guestName && guestName.toLowerCase() !== 'guest') {
+            document.getElementById('guest-name-display').innerText = `Dear ${guestName},`;
+            document.getElementById('rsvp-name').value = guestName;
+        }
+
+        // 2. Audio & Intro Screen
+        const audio = document.getElementById('wedding-audio');
+        const soundBtn = document.getElementById('sound-toggle');
+        let playing = false;
+
+        function enterSite() {
+            document.getElementById('intro-overlay').classList.add('hidden');
+            audio.play().then(() => {
+                playing = true;
+                soundBtn.innerText = '♪ SOUND ON';
+            }).catch(() => {
+                playing = false;
+                soundBtn.innerText = '♪ SOUND OFF';
+            });
+        }
+
+        function toggleAudio() {
+            if (playing) {
+                audio.pause();
+                soundBtn.innerText = '♪ SOUND OFF';
+            } else {
+                audio.play().then(() => {
+                    playing = true;
+                    soundBtn.innerText = '♪ SOUND ON';
+                }).catch(() => {});
+            }
+            playing = !playing;
+        }
+
+        // 3. Countdown Timer (24 Jan 2027)
+        const targetDate = new Date("Jan 24, 2027 20:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            if (diff > 0) {
+                document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+                document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // 4. Interactive Venue Switcher
+        const venues = [
+            {
+                name: "SHARMA RESIDENCE",
+                addr: "Civil Lines, Near Raj Bhavan, Raipur (C.G.)",
+                map: "https://maps.google.com/maps?q=Civil%20Lines%20Raipur&t=&z=14&ie=UTF8&iwloc=&output=embed",
+                link: "https://maps.google.com/?q=Civil+Lines+Raipur"
+            },
+            {
+                name: "ROYAL HERITAGE LAWN",
+                addr: "VIP Road, Near Airport Square, Raipur (C.G.)",
+                map: "https://maps.google.com/maps?q=VIP%20Road%20Raipur&t=&z=14&ie=UTF8&iwloc=&output=embed",
+                link: "https://maps.google.com/?q=VIP+Road+Raipur"
+            },
+            {
+                name: "THE GRAND IMPERIAL RESORT",
+                addr: "Naya Raipur Expressway, Raipur (C.G.)",
+                map: "https://maps.google.com/maps?q=Naya%20Raipur&t=&z=13&ie=UTF8&iwloc=&output=embed",
+                link: "https://maps.google.com/?q=Naya+Raipur"
+            },
+            {
+                name: "COURTYARD GRAND BALLROOM",
+                addr: "Labhandi, NH-53, Raipur (C.G.)",
+                map: "https://maps.google.com/maps?q=Labhandi%20Raipur&t=&z=14&ie=UTF8&iwloc=&output=embed",
+                link: "https://maps.google.com/?q=Labhandi+Raipur"
+            }
+        ];
+
+        function switchVenue(idx, btn) {
+            document.querySelectorAll('.v-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('v-name').innerText = venues[idx].name;
+            document.getElementById('v-addr').innerText = venues[idx].addr;
+            document.getElementById('v-map').src = venues[idx].map;
+            document.getElementById('v-link').href = venues[idx].link;
+        }
+
+        // 5. RSVP & Share Functions
+        let rsvpStatus = "Joyfully Accept";
+        function selectStatus(status, btn) {
+            rsvpStatus = status;
+            document.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+        }
+
+        function sendWhatsAppRSVP() {
+            const name = document.getElementById('rsvp-name').value || "Guest";
+            const msg = document.getElementById('rsvp-msg').value || "Heartiest congratulations!";
+            const phone = "919876543210"; // Apna WhatsApp number yahan dalein
+            const text = `Namaste! *${name}* here.%0A*RSVP:* ${rsvpStatus}%0A*Message:* ${msg}`;
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
+
+        function shareOnWhatsApp() {
+            const url = window.location.href;
+            const text = `You are cordially invited to the wedding celebration of *Anuj & Mira* on 24th Jan 2027! Tap to open invitation: ${url}`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        function copyInviteLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("Invitation link copied! Ab aap ise kisi ko bhi paste karke bhej sakte hain.");
+        }
+
+        // 6. Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
